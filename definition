@@ -1,0 +1,26 @@
+<?php
+class DatabaseObject {
+   // Properties
+   public $id;
+   public $name;
+   public $type;
+   public $date_created;
+   
+   // Methods
+   public function saveToDatabase(){
+       // code to save data to database
+   }
+   
+   public function deleteFromDatabase(){
+       // code to delete data from database
+   }
+   
+   public function updateDatabase(){
+       // code to update data in database
+   }
+   
+   public function retrieveFromDatabase(){
+       // code to retrieve data from database
+   }
+}
+?>
