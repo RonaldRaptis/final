@@ -1,0 +1,34 @@
+<?php
+require_once('database_object.php');
+
+$db = new DatabaseObject();
+
+// GET endpoints
+// Get all records
+$app->get('/records', function($request, $response, $args) {
+   $records = $db->retrieveFromDatabase();
+   return $response->withJson($records);
+});
+
+// Get record by id
+$app->get('/records/{id}', function($request, $response, $args) {
+   $id = $args['id'];
+   $record = $db->retrieveFromDatabase($id);
+   return $response->withJson($record);
+});
+
+// Get records by type
+$app->get('/records/type/{type}', function($request, $response, $args) {
+   $type = $args['type'];
+   $records = $db->retrieveFromDatabase($type);
+   return $response->withJson($records);
+});
+
+// POST endpoint
+// Add new record
+$app->post('/records', function($request, $response, $args) {
+   $record = $request->getParsedBody();
+   $db->saveToDatabase($record);
+   return $response->withJson($record);
+});
+?>
